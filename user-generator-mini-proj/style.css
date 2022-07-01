@@ -261,24 +261,23 @@ main {
 }
 
 .submit-btn:hover {
-    background: var(--clr-primary-5);
     color: var(--clr-white);
 }
 
-.submit-btn .male {
+.male ~ .submit-btn {
     background: var(--clr-primary-8);
 }
 
-.submit-btn .male:hover {
+.male ~ .submit-btn:hover {
     background: var(--clr-primary-5);
     color: var(--clr-white);
 }
 
-.submit-btn .female {
-    background: var(--clr-red-light);
+.female ~ .submit-btn {
+    background: pink;
 }
 
-.submit-btn .female:hover {
+.female ~ .submit-btn:hover {
     background: var(--clr-red-light);
     color: var(--clr-white);
 }

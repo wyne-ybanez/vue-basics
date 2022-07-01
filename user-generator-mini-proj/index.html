@@ -18,7 +18,9 @@
         />
         <h1>Hello {{firstName}} {{lastName}}</h1>
         <h3>Email: {{email}}</h3>
-        <button class="submit-btn">Get Random User</button>
+        <button v-on:click="getRandomUser()" class="submit-btn">
+          Get Random User
+        </button>
       </div>
       <!-- End of App mounting -->
     </div>
