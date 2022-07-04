@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
-    <Tasks v-bind:tasks="tasks_data"/>
+    <Tasks 
+    @delete-task="deleteTask"
+    :tasks="tasks_data"
+    />
   </div>
 </template>
 
@@ -19,6 +22,15 @@ export default {
   data() {
     return {
       tasks_data: []
+    }
+  },
+  // Methods
+  methods: {
+    deleteTask(id) {
+      if(confirm('Are you sure?')){
+        this.tasks_data = this.tasks_data.filter((task) => task.id !== 
+      id)
+      }
     }
   },
   // Premade created data

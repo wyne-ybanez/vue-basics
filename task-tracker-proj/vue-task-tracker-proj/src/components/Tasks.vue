@@ -2,7 +2,7 @@
 <!-- The v-for directive needs to be wrapped in a parent div because this directive needs a single root -->
     <div>
         <div v-for="task in tasks" :key="task.id">
-            <Task :task="task" />
+            <Task @delete-task="$emit('delete-task', task.id)" :task="task" />
         </div>
     </div>
 </template>
@@ -17,6 +17,6 @@
         },
         components: {
             Task,
-        }
+        },
     }
 </script>
