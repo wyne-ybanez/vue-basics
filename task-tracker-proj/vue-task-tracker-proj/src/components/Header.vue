@@ -20,7 +20,7 @@
             */
             title: {
                 type: String,
-                default: 'Hello World',
+                default: 'Task Tracker',
             },
         },
         components: {
