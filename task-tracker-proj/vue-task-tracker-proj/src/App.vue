@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
+    <!-- 'delete-task' is emitted from Task.vue -->
     <Tasks 
-    @delete-task="deleteTask"
+    @toggle-reminder="toggleReminder"
+    @delete-task="deleteTask"  
     :tasks="tasks_data"
     />
   </div>
@@ -28,10 +30,21 @@ export default {
   methods: {
     deleteTask(id) {
       if(confirm('Are you sure?')){
-        this.tasks_data = this.tasks_data.filter((task) => task.id !== 
-      id)
+        this.tasks_data = this.tasks_data.filter((task) => task.id 
+        !== id)
       }
-    }
+    },
+    /*
+      For each task, we check if it's the same ID.
+      We destructure the task to make sure that it returns the reminders accurately.
+      But for the reminder we want, for that specific ID, the reminder is toggled.
+      Else, just return the task if the ID does not match.
+    */
+    toggleReminder(id) {
+      this.tasks_data = this.tasks_data.map((task) => 
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    },
   },
   // Premade created data
   created() {
