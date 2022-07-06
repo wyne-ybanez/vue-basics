@@ -1,7 +1,10 @@
 <template>
   <div class="container">
+    <!-- Header -->
     <Header title="Task Tracker"/>
-    <!-- 'delete-task' is emitted from Task.vue -->
+    <!-- AddTask -->
+    <AddTask/>
+    <!-- Task, 'delete-task' is emitted from Task.vue -->
     <Tasks 
     @toggle-reminder="toggleReminder"
     @delete-task="deleteTask"  
@@ -13,11 +16,13 @@
 <script>
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 export default {
   name: 'App',
   components: {
     Header,
+    AddTask,
     Tasks,
   },
   // Somewhere to collect your data
