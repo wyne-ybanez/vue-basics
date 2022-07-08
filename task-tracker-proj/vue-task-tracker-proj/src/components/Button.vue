@@ -1,7 +1,7 @@
 <template>
     <button 
         :style="{background: color}" 
-        @click="Add()"
+        @click="onClick()"
         class="btn"
         >   
         {{text}}
@@ -21,14 +21,8 @@
             }
         },
         methods: {
-            Add() {
-                console.log('Added');
-            },
-            Update() {
-                console.log('Update');
-            },
-            Delete() {
-                console.log('Delete');
+            onClick() {
+                this.$emit('toggle-form')
             }
         }
     }

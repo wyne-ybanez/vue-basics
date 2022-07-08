@@ -1,9 +1,13 @@
 <template>
   <div class="container">
-    <!-- Header -->
-    <Header title="Task Tracker"/>
-    <!-- AddTask -->
-    <AddTask/>
+    <!-- Header, contains the button component -->
+    <Header @toggle-form="toggleAddTask" title="Task Tracker"/>
+
+    <!-- AddTask, toggle effect for add task form -->
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask"/>
+    </div>
+
     <!-- Task, 'delete-task' is emitted from Task.vue -->
     <Tasks 
     @toggle-reminder="toggleReminder"
@@ -25,14 +29,21 @@ export default {
     AddTask,
     Tasks,
   },
-  // Somewhere to collect your data
+  // Somewhere to collect your data, an array
   data() {
     return {
-      tasks_data: []
+      tasks_data: [],
+      showAddTask: false,
     }
   },
   // Methods
   methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+    addTask(task) {
+      this.tasks_data = [...this.tasks_data, task]
+    },
     deleteTask(id) {
       if(confirm('Are you sure?')){
         this.tasks_data = this.tasks_data.filter((task) => task.id 

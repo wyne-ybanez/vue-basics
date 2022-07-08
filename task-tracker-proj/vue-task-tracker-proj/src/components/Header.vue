@@ -3,8 +3,8 @@
         <!-- Accessing props through curly braces -->
         <h1>{{title}}</h1>
 
-        <!-- Button Component -->
-        <Button text="Add Task" color="green"/>
+        <!-- Button Component, catching the toggle from the button component -->
+        <Button @toggle-form="$emit('toggle-form')" text="Add Task" color="green"/>
     </header>
 </template>
 
