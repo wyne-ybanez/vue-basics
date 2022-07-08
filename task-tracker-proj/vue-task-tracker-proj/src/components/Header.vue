@@ -4,7 +4,11 @@
         <h1>{{title}}</h1>
 
         <!-- Button Component, catching the toggle from the button component -->
-        <Button @toggle-form="$emit('toggle-form')" text="Add Task" color="green"/>
+        <Button 
+        @btn-click="$emit('btn-click')" 
+        :text="showAddTask ? 'Close' : 'Add Task'" 
+        :color="showAddTask ? 'black' : 'green'"
+        />
     </header>
 </template>
 
@@ -18,10 +22,9 @@
             Passing in props in the form of an object
             Props can also be objects with type and default values for more control
             */
-            title: {
-                type: String,
-                default: 'Task Tracker',
-            },
+            title: String,
+            // Boolean prop types are automatically true unless specified
+            showAddTask: Boolean,
         },
         components: {
             Button,

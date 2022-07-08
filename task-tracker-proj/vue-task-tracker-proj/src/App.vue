@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <!-- Header, contains the button component -->
-    <Header @toggle-form="toggleAddTask" title="Task Tracker"/>
+    <Header 
+    @btn-click="toggleAddTask" 
+    title="Task Tracker"
+    :showAddTask="showAddTask"
+    />
 
     <!-- AddTask, toggle effect for add task form -->
     <div v-show="showAddTask">
