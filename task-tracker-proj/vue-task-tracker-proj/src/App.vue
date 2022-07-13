@@ -45,7 +45,14 @@ export default {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask
     },
-    addTask(task) {
+    async addTask(task) {
+      const res = await fetch('api/tasks/', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application',
+        }
+      })
+
       this.tasks_data = [...this.tasks_data, task]
     },
     deleteTask(id) {
@@ -65,9 +72,15 @@ export default {
         task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     },
-    // Fetches tasks data from database
+    // Fetches all tasks from database
     async fetchTasks() {
-      const res = await fetch('http://localhost:5000/tasks_data')
+      const res = await fetch('api/tasks_data')
+      const data = await res.json()
+      return data
+    },
+    // Fetch a specific Task from database
+    async fetchTask(id) {
+      const res = await fetch(`api/tasks_data/${id}`)
       const data = await res.json()
       return data
     }
