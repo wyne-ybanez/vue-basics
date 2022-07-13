@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+// import router from './router'
 
-// Creating the app here and mounting it on the ID app
 createApp(App).mount('#app')

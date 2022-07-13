@@ -16,9 +16,7 @@
                 type: String,
                 default: 'Button',
             },
-            color: {
-                type: String,
-            }
+            color: String,
         },
         methods: {
             onClick() {

@@ -65,29 +65,16 @@ export default {
         task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     },
+    // Fetches tasks data from database
+    async fetchTasks() {
+      const res = await fetch('http://localhost:5000/tasks_data')
+      const data = await res.json()
+      return data
+    }
   },
-  // Premade created data
-  created() {
-    this.tasks_data = [
-      {
-        id: 1,
-        text: "Doctor's Appointment",
-        day: 'March 1st at 2:30pm',
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: "Meeting at School",
-        day: 'March 3rd at 1:30pm',
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: "Food Shopping",
-        day: 'March 3rd at 11:00am',
-        reminder: false,
-      },
-    ]
+  // Created data 
+  async created() {
+    this.tasks_data = await this.fetchTasks()
   }
 }
 </script>
